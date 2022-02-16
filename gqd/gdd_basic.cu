@@ -221,6 +221,40 @@ gdd_real operator/(const gdd_real &a, double b) {
     return r;
 }
 
+// compound assignment
+__device__ gdd_real operator+=(const gdd_real a, const gdd_real b) {
+    return a + b;
+}
+
+__device__ gdd_real operator+=(const gdd_real a, const double b) {
+    return a + make_dd(b);
+}
+
+__device__ gdd_real operator-=(const gdd_real a, const gdd_real b) {
+    return a - b;
+}
+
+__device__ gdd_real operator-=(const gdd_real a, const double b) {
+    return a - make_dd(b);
+}
+
+__device__ gdd_real operator*=(const gdd_real a, const gdd_real b) {
+    return a * b;
+}
+
+__device__ gdd_real operator*=(const gdd_real a, const double b) {
+    return a * make_dd(b);
+}
+
+__device__ gdd_real operator/=(const gdd_real a, const gdd_real b) {
+    return a / b;
+}
+
+__device__ gdd_real operator/=(const gdd_real a, const double b) {
+    return a / make_dd(b);
+}
+// end compound assignment
+
 __host__ __device__
 bool is_zero(const gdd_real &a) {
     return (a.x == 0.0);

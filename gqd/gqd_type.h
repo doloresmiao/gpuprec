@@ -15,7 +15,20 @@
 
 
 /* type definition */
-typedef double2 gdd_real;
+struct gdd_real {
+    double x, y;
+
+    __host__ __device__ gdd_real(const double a) {
+        x = a; y = 0.0;
+    }
+
+    __host__ __device__ gdd_real() {
+    }
+
+    __host__ __device__ explicit operator double() {
+        return x;
+    }
+};
 
 typedef double4 gqd_real;
 

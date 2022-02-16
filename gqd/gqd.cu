@@ -13,13 +13,15 @@
 #include "gdd_log.cu"
 #include "gdd_sincos.cu"
 
-
+#if 0
 /* gqd_libraray */
 #include "gqd_basic.cu"
 #include "gqd_sqrt.cu"
 #include "gqd_exp.cu"
 #include "gqd_log.cu"
 #include "gqd_sincos.cu"
+
+#endif
 
 #endif // __GQD_CU__
 

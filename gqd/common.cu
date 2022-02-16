@@ -24,12 +24,16 @@ using namespace CUDAUtil;
 /* type construction */
 __device__ __host__
 gdd_real make_dd(const double x, const double y) {
-    return make_double2(x, y);
+    gdd_real ret;
+    ret.x = x; ret.y = y;
+    return ret;
 }
 
 __device__ __host__
 gdd_real make_dd(const double x) {
-    return make_double2(x, 0.0);
+    gdd_real ret;
+    ret.x = x; ret.y = 0.0;
+    return ret;
 }
 
 __device__ __host__
