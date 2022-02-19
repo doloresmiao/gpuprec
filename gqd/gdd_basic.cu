@@ -221,6 +221,15 @@ gdd_real operator/(const gdd_real &a, double b) {
     return r;
 }
 
+// unary operators
+__device__ gdd_real operator+(const gdd_real a) {
+    return a;
+}
+
+__device__ gdd_real operator-(const gdd_real a) {
+    return make_dd(0.0) - a;
+}
+
 // compound assignment
 __device__ gdd_real operator+=(const gdd_real a, const gdd_real b) {
     return a + b;
