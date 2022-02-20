@@ -307,13 +307,6 @@ gdd_real tan(const gdd_real &a) {
     return s / c;
 }
 
-// TODO: placeholder functions
-__device__
-gdd_real pow(const gdd_real a, const gdd_real b) {
-    return make_dd(pow(a.x, b.x));
-}
-
-
 #ifndef ALL_MATH
 
 __device__

@@ -203,15 +203,15 @@ float device_basic_template(T* h_in1, T* h_in2, T* h_out, const unsigned int num
     if (op == ADD) {
         device_add_kernel << <numBlock, numThread>>>(d_in1, d_in2, numElement, d_out);
         getLastCudaError("device_add_kernel");
-        checkCudaErrors(cudaThreadSynchronize());
+        checkCudaErrors(cudaDeviceSynchronize());
     } else if (op == MUL) {
         device_mul_kernel << <numBlock, numThread>>>(d_in1, d_in2, numElement, d_out);
         getLastCudaError("device_mul_kernel");
-        checkCudaErrors(cudaThreadSynchronize());
+        checkCudaErrors(cudaDeviceSynchronize());
     } else if (op == DIV) {
         device_div_kernel << <numBlock, numThread>>>(d_in1, d_in2, numElement, d_out);
         getLastCudaError("device_div_kernel");
-        checkCudaErrors(cudaThreadSynchronize());
+        checkCudaErrors(cudaDeviceSynchronize());
     } else {
         printf("!!!Never here!\n");
         exit(EXIT_FAILURE);
@@ -257,44 +257,44 @@ float device_math_template(T* h_in, const unsigned int numElement, T* h_out,
     if (math == SQRT) {
         device_sqrt_kernel << <numBlock, numThread>>>(d_in, numElement, d_out);
         getLastCudaError("device_sqrt_kernel");
-        checkCudaErrors(cudaThreadSynchronize());
+        checkCudaErrors(cudaDeviceSynchronize());
     } else if (math == SQR) {
         device_sqr_kernel << <numBlock, numThread>>>(d_in, numElement, d_out);
         getLastCudaError("device_sqr_kernel");
-        checkCudaErrors(cudaThreadSynchronize());
+        checkCudaErrors(cudaDeviceSynchronize());
     } else if (math == EXP) {
         device_exp_kernel << <numBlock, numThread>>>(d_in, numElement, d_out);
         getLastCudaError("device_exp_kernel");
-        checkCudaErrors(cudaThreadSynchronize());
+        checkCudaErrors(cudaDeviceSynchronize());
     } else if (math == LOG) {
         device_log_kernel << <numBlock, numThread>>>(d_in, numElement, d_out);
         getLastCudaError("device_log_kernel");
-        checkCudaErrors(cudaThreadSynchronize());
+        checkCudaErrors(cudaDeviceSynchronize());
     } else if (math == SIN) {
         device_sin_kernel << <numBlock, numThread>>>(d_in, numElement, d_out);
         getLastCudaError("device_sin_kernel");
-        checkCudaErrors(cudaThreadSynchronize());
+        checkCudaErrors(cudaDeviceSynchronize());
     } else if (math == COS) {
         device_cos_kernel << <numBlock, numThread>>>(d_in, numElement, d_out);
         getLastCudaError("device_cos_kernel");
-        checkCudaErrors(cudaThreadSynchronize());
+        checkCudaErrors(cudaDeviceSynchronize());
     } else if (math == TAN) {
         device_tan_kernel << <numBlock, numThread>>>(d_in, numElement, d_out);
         getLastCudaError("device_tan_kernel");
-        checkCudaErrors(cudaThreadSynchronize());
+        checkCudaErrors(cudaDeviceSynchronize());
     } else if (math == ACOS) {
         device_acos_kernel << <numBlock, numThread>>>(d_in, numElement, d_out);
         getLastCudaError("device_acos_kernel");
-        checkCudaErrors(cudaThreadSynchronize());
+        checkCudaErrors(cudaDeviceSynchronize());
     } else if (math == ASIN) {
         device_asin_kernel << <numBlock, numThread>>>(d_in, numElement, d_out);
         getLastCudaError("device_asin_kernel");
-        checkCudaErrors(cudaThreadSynchronize());
+        checkCudaErrors(cudaDeviceSynchronize());
     } else if (math == ATAN) {
         /*startTimer(&timer);
         device_atan_kernel<<<numBlock, numThread>>>(d_in, numElement, d_out);
         getLastCudaError("device_atan_kernel");
-        checkCudaErrors(cudaThreadSynchronize());
+        checkCudaErrors(cudaDeviceSynchronize());
         elapsedTime = endTimer(&timer, "device_atan_kernel");*/
     } else {
         printf("!!! Never here.\n");
@@ -347,7 +347,7 @@ float device_defined_template(T* h_in, const unsigned int numElement, T* h_out,
     timer.go();
     device_defined_kernel << <numBlock, numThread>>>(d_in, numElement, d_out);
     getLastCudaError("device_defined_kernel");
-    checkCudaErrors(cudaThreadSynchronize());
+    checkCudaErrors(cudaDeviceSynchronize());
     timer.stop();
     printf("*** kernel time: %f sec ***\n", timer.report() / 1000.f);
 
@@ -401,7 +401,7 @@ void device_qrsmap(const unsigned int N, const int numBlock, const int numThread
 
     timer.go();
     gpu_fx_map_kernel1 << <numBlock, numThread>>>(d_x, d_c, N);
-    checkCudaErrors(cudaThreadSynchronize());
+    checkCudaErrors(cudaDeviceSynchronize());
     getLastCudaError("gpu_fx_map_kernel1");
     timer.stop();
     printf("gpu_fx_map_kernel1 %f\n", timer.report());

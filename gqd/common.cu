@@ -129,13 +129,13 @@ void GDDStart(const int device) {
 
 void GDDEnd() {
     printf("GQD turns off...\n");
-    cudaThreadExit();
+    cudaDeviceReset();
     printf("\tdone.\n");
 }
 
 void GQDEnd() {
     printf("GQD turns off...\n");
-    cudaThreadExit();
+    cudaDeviceReset();
     printf("\tdone.\n");
 }
 

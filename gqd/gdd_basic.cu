@@ -221,6 +221,16 @@ gdd_real operator/(const gdd_real &a, double b) {
     return r;
 }
 
+// begin placeholder functions
+__device__ gdd_real ceil(const gdd_real a) {
+    return make_dd(ceil(a.x));
+}
+
+__device__ gdd_real pow(const gdd_real a, const gdd_real b) {
+    return make_dd(pow(a.x, b.x));
+}
+// end placeholder functions
+
 // unary operators
 __device__ gdd_real operator+(const gdd_real a) {
     return a;
