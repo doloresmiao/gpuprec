@@ -229,6 +229,10 @@ __device__ gdd_real ceil(const gdd_real a) {
 __device__ gdd_real pow(const gdd_real a, const gdd_real b) {
     return make_dd(pow(a.x, b.x));
 }
+
+__device__ gdd_real fmod(const gdd_real a, const gdd_real b) {
+    return make_dd(fmod(a.x, b.x));
+}
 // end placeholder functions
 
 // unary operators
