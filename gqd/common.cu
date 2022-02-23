@@ -85,7 +85,6 @@ static __device__ __constant__ gqd_real d_cos_table[256];
 
 /** initialization function */
 void GDDStart(const int device) {
-    printf("GDD turns on...\n");
     cudaSetDevice(device);
 
     gdd_real h_inv_fact[] = {
@@ -123,25 +122,17 @@ void GDDStart(const int device) {
         make_dd(7.071067811865475727e-01, -4.833646656726456726e-17)
     };
     checkCudaErrors(cudaMemcpyToSymbol(d_dd_cos_table, h_cos_table, sizeof (gdd_real)*4));
-
-    printf("\tdone.\n");
 }
 
 void GDDEnd() {
-    printf("GQD turns off...\n");
     cudaDeviceReset();
-    printf("\tdone.\n");
 }
 
 void GQDEnd() {
-    printf("GQD turns off...\n");
     cudaDeviceReset();
-    printf("\tdone.\n");
 }
 
 void GQDStart(const int device) {
-    printf("GQD turns on ...\n");
-
     cudaSetDevice(device);
 
     //inverse table
@@ -1215,9 +1206,6 @@ void GQDStart(const int device) {
     };
     checkCudaErrors(cudaMemcpyToSymbol(d_cos_table, h_cos_table, sizeof (gqd_real)*256));
     //TOGPU( d_cos_table, h_cos_table, sizeof(gqd_real)*256 );
-
-
-    printf("\tdone.\n");
 }
 
 
