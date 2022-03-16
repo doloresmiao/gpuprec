@@ -26,6 +26,23 @@ gdd_real log(const gdd_real &a) {
     return x;
 }
 
+__device__
+
+gdd_real log10(const gdd_real &a) {
+    if (is_one(a)) {
+        return make_dd(0.0);
+    }
+
+    //!!!!!!!!!
+    //TO DO: return an errro
+    if (a.x <= 0.0) {
+        //return _nan;
+        return make_dd(0.0);
+    }
+
+    return log(a) / log(make_dd(10.0));
+}
+
 #endif /* __GDD_LOG_CU__ */
 
 

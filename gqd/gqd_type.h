@@ -28,6 +28,10 @@ struct gdd_real {
     __host__ __device__ explicit operator double() {
         return x;
     }
+
+    __host__ __device__ explicit operator int() {
+        return int(x);
+    }
 };
 
 typedef double4 gqd_real;

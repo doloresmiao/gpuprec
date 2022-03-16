@@ -226,6 +226,10 @@ __device__ gdd_real ceil(const gdd_real a) {
     return make_dd(ceil(a.x));
 }
 
+__device__ gdd_real floor(const gdd_real a) {
+    return make_dd(floor(a.x));
+}
+
 __device__ gdd_real pow(const gdd_real a, const gdd_real b) {
     return make_dd(pow(a.x, b.x));
 }
